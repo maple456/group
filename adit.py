@@ -26,10 +26,10 @@ ki.log("Channel Access Token : " + str(channel1.channelAccessToken))
 #ubah mid di dalem admin json dengan mid kalian
 poll = LinePoll(aditmadzs)
 call = aditmadzs
-creator = ["ufe1707ae9b2ff7ab61505795b7995440"]
-owner = ["ufe1707ae9b2ff7ab61505795b7995440","u9b10a925c894226b3420006c1a922a51"]
-admin = ["ufe1707ae9b2ff7ab61505795b7995440","u9b10a925c894226b3420006c1a922a51"]
-staff = ["u9b10a925c894226b3420006c1a922a51"]
+creator = ["uec6d62c3e4a61f033332bc1d86133e49"]
+owner = ["uec6d62c3e4a61f033332bc1d86133e49","ud9964664052659ba468d55de6df0"]
+admin = ["uec6d62c3e4a61f033332bc1d86133e49","ud9964664052659ba468d55de6df0"]
+staff = ["uec6d62c3e4a61f033332bc1d86133e491"]
 mid = aditmadzs.getProfile().mid
 Amid = ki.getProfile().mid
 KAC = [aditmadzs,ki]
@@ -1048,7 +1048,7 @@ def bot(op):
                         if msg_dict1[msg_id]["from"]:
                                 ginfo = aditmadzs.getGroup(at)
                                 arifAR = aditmadzs.getContact(msg_dict1[msg_id]["from"])
-                                ret_ =  "「 Sticker Dihapus 」\n"
+                                ret_ =  "「 貼圖已刪除 」\n"
                                 ret_ += "• Pengirim : {}".format(str(arifAR.displayName))
                                 ret_ += "\n• Nama Grup : {}".format(str(ginfo.name))
                                 ret_ += "\n• Waktu Ngirim : {}".format(dt_to_str(cTime_to_datetime(msg_dict1[msg_id]["createdTime"])))
@@ -1179,7 +1179,7 @@ def bot(op):
                if msg.contentType == 7:
                  if wait["sticker"] == True:
                     msg.contentType = 0
-                    aditmadzs.sendMessage(msg.to,"「Cek ID Sticker」\n🐚 STKID : " + msg.contentMetadata["STKID"] + "\n⏩ STKPKGID : " + msg.contentMetadata["STKPKGID"] + "\n⏩ STKVER : " + msg.contentMetadata["STKVER"]+ "\n\n「Link Sticker」" + "\nline://shop/detail/" + msg.contentMetadata["STKPKGID"])
+                    aditmadzs.sendMessage(msg.to,"「檢查貼圖ID」\n🐚 ID : " + msg.contentMetadata["STKID"] + "\n⏩ STKPKGID : " + msg.contentMetadata["STKPKGID"] + "\n⏩ STKVER : " + msg.contentMetadata["STKVER"]+ "\n\n「Link Sticker」" + "\nline://shop/detail/" + msg.contentMetadata["STKPKGID"])
                if msg.contentType == 13:
                  if wait["contact"] == True:
                     msg.contentType = 0
@@ -1188,7 +1188,7 @@ def bot(op):
                         contact = aditmadzs.getContact(msg.contentMetadata["mid"])
                         path = aditmadzs.getContact(msg.contentMetadata["mid"]).picturePath
                         image = 'http://dl.profile.line.naver.jp'+path
-                        aditmadzs.sendMessage(msg.to,"⏩ Nama : " + msg.contentMetadata["displayName"] + "\n⏩ MID : " + msg.contentMetadata["mid"] + "\n⏩ Status : " + contact.statusMessage + "\n⏩ Picture URL : http://dl.profile.line-cdn.net/" + contact.pictureStatus)
+                        aditmadzs.sendMessage(msg.to,"⏩ 名稱 : " + msg.contentMetadata["displayName"] + "\n⏩ MID : " + msg.contentMetadata["mid"] + "\n⏩ Status : " + contact.statusMessage + "\n⏩ Picture URL : http://dl.profile.line-cdn.net/" + contact.pictureStatus)
                         aditmadzs.sendImageWithURL(msg.to, image)
 
         if op.type == 25 or op.type == 26:
@@ -1198,11 +1198,11 @@ def bot(op):
             receiver = msg.to
             sender = msg._from
             if msg.contentType == 0:
-                msg_dict[msg.id] = {"text":msg.text,"from":msg._from,"createdTime":msg.createdTime}
+                msg_dict[msg.id] = {"text":msg.text,"from":msg._from,"創建時間":msg.createdTime}
                 
             if msg.contentType == 1:
                     path = aditmadzs.downloadObjectMsg(msg_id)
-                    msg_dict[msg.id] = {"text":'Gambarnya dibawah',"data":path,"from":msg._from,"createdTime":msg.createdTime}
+                    msg_dict[msg.id] = {"text":'Gambarnya dibawah',"data":path,"from":msg._from,"創建時間":msg.createdTime}
             if msg.contentType == 7:
                    stk_id = msg.contentMetadata["STKID"]
                    stk_ver = msg.contentMetadata["STKVER"]
@@ -1236,95 +1236,95 @@ def bot(op):
                         contact = aditmadzs.getContact(msg.contentMetadata["mid"])
                         path = aditmadzs.getContact(msg.contentMetadata["mid"]).picturePath
                         image = 'http://dl.profile.line.naver.jp'+path
-                        aditmadzs.sendMessage(msg.to,"⏩ Nama : " + msg.contentMetadata["displayName"] + "\n⏩ MID : " + msg.contentMetadata["mid"] + "\n⏩ Status : " + contact.statusMessage + "\n⏩ Picture URL : http://dl.profile.line-cdn.net/" + contact.pictureStatus)
+                        aditmadzs.sendMessage(msg.to,"⏩ 名稱 : " + msg.contentMetadata["displayName"] + "\n⏩ MID : " + msg.contentMetadata["mid"] + "\n⏩ Status : " + contact.statusMessage + "\n⏩ Picture URL : http://dl.profile.line-cdn.net/" + contact.pictureStatus)
                         aditmadzs.sendImageWithURL(msg.to, image)
 #===========ADD BOT============#
                if msg.contentType == 13:
                  if msg._from in admin:
                   if wait["addbots"] == True:
                     if msg.contentMetadata["mid"] in Bots:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah jadi anggota bot")
+                        aditmadzs.sendMessage(msg.to,"該聯繫人已成為機器人成員")
                         wait["addbots"] = True
                     else:
                         Bots.append(msg.contentMetadata["mid"])
                         wait["addbots"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke anggota bot")
+                        aditmadzs.sendMessage(msg.to,"成功添加到機器人成員)
                  if wait["dellbots"] == True:
                     if msg.contentMetadata["mid"] in Bots:
                         Bots.remove(msg.contentMetadata["mid"])
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari anggota bot")
+                        aditmadzs.sendMessage(msg.to,"成功從機器人成員中刪除")
                     else:
                         wait["dellbots"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu bukan anggota Aditmadzs BOT")
+                        aditmadzs.sendMessage(msg.to,"該聯繫人不是Aditmadzs BOT的成員")
 #===========ADD STAFF============#
                  if msg._from in admin:
                   if wait["addstaff"] == True:
                     if msg.contentMetadata["mid"] in staff:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah jadi staff")
+                        aditmadzs.sendMessage(msg.to,"該聯繫已成為一名員工")
                         wait["addstaff"] = True
                     else:
                         staff.append(msg.contentMetadata["mid"])
                         wait["addstaff"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke staff")
+                        aditmadzs.sendMessage(msg.to,"成功添加到員工")
                  if wait["dellstaff"] == True:
                     if msg.contentMetadata["mid"] in staff:
                         staff.remove(msg.contentMetadata["mid"])
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari staff")
+                        aditmadzs.sendMessage(msg.to,"成功刪除員工")
                         wait["dellstaff"] = True
                     else:
                         wait["dellstaff"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu bukan staff")
+                        aditmadzs.sendMessage(msg.to,"聯繫不是工作人員")
 #===========ADD ADMIN============#
                  if msg._from in admin:
                   if wait["addadmin"] == True:
                     if msg.contentMetadata["mid"] in admin:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah jadi admin")
+                        aditmadzs.sendMessage(msg.to,"該聯繫人已成為管理員")
                         wait["addadmin"] = True
                     else:
                         admin.append(msg.contentMetadata["mid"])
                         wait["addadmin"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke admin")
+                        aditmadzs.sendMessage(msg.to,"成功添加到管理員")
                  if wait["delladmin"] == True:
                     if msg.contentMetadata["mid"] in admin:
                         admin.remove(msg.contentMetadata["mid"])
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari admin")
+                        aditmadzs.sendMessage(msg.to,"成功從管理員中刪除")
                     else:
                         wait["delladmin"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu bukan admin")
+                        aditmadzs.sendMessage(msg.to,"聯繫人不是管理員")
 #===========ADD BLACKLIST============#
                  if msg._from in admin:
                   if wait["wblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["blacklist"]:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah ada di blacklist")
+                        aditmadzs.sendMessage(msg.to,"該聯繫人已被列入黑名單")
                         wait["wblacklist"] = True
                     else:
                         wait["blacklist"][msg.contentMetadata["mid"]] = True
                         wait["wblacklist"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke blacklist user")
+                        aditmadzs.sendMessage(msg.to,"成功添加到用戶黑名單")
                   if wait["dblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["blacklist"]:
                         del wait["blacklist"][msg.contentMetadata["mid"]]
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari blacklist user")
+                        aditmadzs.sendMessage(msg.to,"成功從用戶黑名單中刪除")
                     else:
                         wait["dblacklist"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu tidak ada di blacklist")
+                        aditmadzs.sendMessage(msg.to,"該聯繫人未列入黑名單")
 #===========TALKBAN============#
                  if msg._from in admin:
                   if wait["Talkwblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["Talkblacklist"]:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah ada di Talkban")
+                        aditmadzs.sendMessage(msg.to,"該聯繫人已在Talkban上")
                         wait["Talkwblacklist"] = True
                     else:
                         wait["Talkblacklist"][msg.contentMetadata["mid"]] = True
                         wait["Talkwblacklist"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke Talkban user")
+                        aditmadzs.sendMessage(msg.to,"成功添加到Talkban用戶")
                   if wait["Talkdblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["Talkblacklist"]:
                         del wait["Talkblacklist"][msg.contentMetadata["mid"]]
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari Talkban user")
+                        aditmadzs.sendMessage(msg.to,"從Talkban用戶成功刪除")
                     else:
                         wait["Talkdblacklist"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu tidak ada di Talkban")
+                        aditmadzs.sendMessage(msg.to,"Talkban上不存在該聯繫人")
 #===========UPDATE FOTO============#
                if msg.contentType == 1:
                  if msg._from in admin:
@@ -1337,7 +1337,7 @@ def bot(op):
                             path = os.path.join(os.path.dirname(__file__), 'dataPhotos/%s.jpg' % Setmain["Img"])
                             with open(path, 'wb') as fp:
                                 shutil.copyfileobj(r.raw, fp)
-                            aditmadzs.sendMessage(msg.to, "Berhasil menambahkan gambar")
+                            aditmadzs.sendMessage(msg.to, "成功添加圖像")
                         Setmain["Img"] = {}
                         Setmain["Addimage"] = False
 
@@ -1347,7 +1347,7 @@ def bot(op):
                      path = aditmadzs.downloadObjectMsg(msg_id)
                      settings["groupPicture"] = False
                      aditmadzs.updateGroupPicture(msg.to, path)
-                     aditmadzs.sendMessage(msg.to, "Berhasil mengubah foto group")
+                     aditmadzs.sendMessage(msg.to, "成功更改群組圖片")
 
                if msg.contentType == 1:
                    if msg._from in admin:
@@ -1355,7 +1355,7 @@ def bot(op):
                             path = aditmadzs.downloadObjectMsg(msg_id)
                             del Setmain["ADITMADZSfoto"][mid]
                             aditmadzs.updateProfilePicture(path)
-                            aditmadzs.sendMessage(msg.to,"Foto berhasil dirubah")
+                            aditmadzs.sendMessage(msg.to,"圖片已成功更改")
 
                if msg.contentType == 1:
                  if msg._from in admin:
@@ -1363,7 +1363,7 @@ def bot(op):
                             path = ki.downloadObjectMsg(msg_id)
                             del Setmain["ADITMADZSfoto"][Amid]
                             ki.updateProfilePicture(path)
-                            ki.sendMessage(msg.to,"Foto berhasil dirubah")
+                            ki.sendMessage(msg.to,"圖片已成功更改")
 
                if msg.contentType == 1:
                  if msg._from in admin:
@@ -1371,7 +1371,7 @@ def bot(op):
                      path1 = ki.downloadObjectMsg(msg_id)
                      settings["changePicture"] = False
                      ki.updateProfilePicture(path1)
-                     ki.sendMessage(msg.to, "Berhasil mengubah foto profile bot")               
+                     ki.sendMessage(msg.to, "成功更改個人資料照片機器人")               
 
                if msg.contentType == 0:
                     if Setmain["autoRead"] == True:
@@ -1389,12 +1389,12 @@ def bot(op):
                         if cmd == "self on":
                             if msg._from in admin:
                                 wait["selfbot"] = True
-                                aditmadzs.sendMessage(msg.to, "Selfbot diaktifkan")
+                                aditmadzs.sendMessage(msg.to, "Selfbot已激活")
                                 
                         elif cmd == "self off":
                             if msg._from in admin:
                                 wait["selfbot"] = False
-                                aditmadzs.sendMessage(msg.to, "Selfbot dinonaktifkan")
+                                aditmadzs.sendMessage(msg.to, "Selfbot已禁用")
                                             
                         elif cmd == "help bot":
                           if wait["selfbot"] == True:
@@ -1417,19 +1417,19 @@ def bot(op):
                         if cmd == "unsend on":
                             if msg._from in admin:
                                 wait["unsend"] = True
-                                aditmadzs.sendMessage(msg.to, "Deteksi Unsend Diaktifkan")
+                                aditmadzs.sendMessage(msg.to, "開啟查看收回")
                                 
                         if cmd == "unsend off":
                             if msg._from in admin:
                                 wait["unsend"] = False
-                                aditmadzs.sendMessage(msg.to, "Deteksi Unsend Dinonaktifkan")                                
+                                aditmadzs.sendMessage(msg.to, "關閉查看收回")                                
 
                         elif cmd == "status":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 tz = pytz.timezone("Asia/Jakarta")
                                 timeNow = datetime.now(tz=tz)
-                                md = "  ┏━━━━━━━━━━━━━━━━━\n┃┃          🐚 S T A T U S 🐚\n┃┣━━━━━━━━━━━━━━━━━━━━\n"
+				md = "  ┏━━━━━━━━━━━━━━━━━\n┃┃   狀態 status \n┃┣━━━━━━━━━━━━━━━━━━━━\n"
                                 if wait["unsend"] == True: md+="┃┃🍁 ✔️ Unsend「ON」\n"
                                 else: md+="┃┃🍁 ✖ Unsend「OFF」\n"                                
                                 if wait["sticker"] == True: md+="┃┃🍁 ✔️ Sticker「ON」\n"
