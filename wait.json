@@ -1,7 +1,7 @@
 {
     "Mentiongift": false,
     "Mentionkick": false,
-    "Respontag": "不要標記我＞﹏＜",
+    "Respontag": "標記我幹嘛呢?有事這裡說",
     "Talkblacklist": {},
     "Talkdblacklist": false,
     "Talkwblacklist": false,
@@ -29,8 +29,8 @@
     "detectMention": false,
     "leave": "",
     "limit": 1,
-    "mention": "不要標記我 -_-",
-    "message": "安安 感謝您加我好友 (^_^)\n🌈我的作者:©莫言♡™🌈\nhttps://line.me/ti/p/4-LFlTx31f\n",
+    "mention": "請不要標記我",
+    "message": "早安 感謝您本機為好友\n這是我的作者:@楓糖\nhttps://line.me/ti/p/36557153\n",
     "owner": {},
     "selfbot": true,
     "staff": {},
@@ -38,6 +38,6 @@
     "talkban": false,
     "unsend": true,
     "wblacklist": false,
-    "welcome": "歡迎加入此群組",
+    "welcome": "歡迎加入群組",
     "welcomeOn": true
 }
